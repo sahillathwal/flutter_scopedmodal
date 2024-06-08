@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_guide/service_locator.dart';
-import 'package:scoped_guide/ui/home_view.dart';
+import 'package:scoped_guide/ui/views/home_view.dart';
 
 void main() {
   setupLocator();

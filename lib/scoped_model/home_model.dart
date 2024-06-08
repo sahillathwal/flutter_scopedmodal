@@ -1,20 +1,19 @@
+import 'package:scoped_guide/scoped_model/base_model.dart';
 import 'package:scoped_guide/service_locator.dart';
 import 'package:scoped_guide/services/storage_service.dart';
-import 'package:scoped_model/scoped_model.dart';
 
-class HomeModel extends Model {
+class HomeModel extends BaseModel {
   StorageService storageService = locator<StorageService>();
 
   String title = "HomeModel";
 
-  Future saveData() async {
-    setTitle("Saving Data");
+  Future<bool> saveData() async {
+    setState(ViewState.busy);
+    title = "Saving Data";
     await storageService.saveData();
-    setTitle("Data Saved");
-  }
+    title = "Data Saved";
+    setState(ViewState.retrieved);
 
-  void setTitle(String value) {
-    title = value;
-    notifyListeners();
+    return true;
   }
 }
